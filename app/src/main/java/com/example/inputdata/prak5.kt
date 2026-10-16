@@ -1,11 +1,15 @@
 package com.example.inputdata
 
+import android.graphics.Color
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -19,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -28,8 +33,8 @@ fun FormDataDiri(modifier: Modifier){
     var textJK by remember { mutableStateOf(value ="") }
 
     var nama by remember { mutableStateOf(value = "") }
-    var Alamat by remember { mutableStateOf(value ="") }
-    var JK by remember { mutableStateOf(value ="") }
+    var alamat by remember { mutableStateOf(value ="") }
+    var jenis by remember { mutableStateOf(value ="") }
     val gender:List<String> =  listOf("Laki-Laki", "Perempuan")
     Column(modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
@@ -77,6 +82,19 @@ fun FormDataDiri(modifier: Modifier){
                         id = R.dimen.padding_medium
                     )
             ),
+            thickness = dimensionResource(id = R.dimen.divider_tipis),
+            color = androidx.compose.ui.graphics.Color(Color.DKGRAY)
         )
+        Button(
+            modifier = Modifier.fillMaxWidth(1f),
+            enabled = textAlamat.isNotEmpty(),
+                onClick = {
+                    nama =textNama
+                    jenis =textJK
+                    alamat =textAlamat
+                }
+        ) {
+            Text(stringResource(R.string.submit))
+        }
     }
 }
