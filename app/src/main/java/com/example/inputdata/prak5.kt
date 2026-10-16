@@ -59,5 +59,15 @@ fun FormDataDiri(modifier: Modifier){
                 }
             }
         }
+        OutlinedTextField(
+            value = textAlamat,
+            singleLine = true,
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier.width(250.dp),
+            label = { Text(text = "Alamat")},
+            onValueChange = {
+                textAlamat = it
+            }
+        )
     }
 }
